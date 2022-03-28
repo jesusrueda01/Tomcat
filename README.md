@@ -1,3 +1,4 @@
 # Tomcat
 Desarrolo de Tomcat
-#2 Pasos a seguir:
+## Pasos a seguir:
+#### 1 instalación de java 
