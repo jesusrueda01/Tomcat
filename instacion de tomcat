@@ -1,0 +1,40 @@
+Servidor con ubuntu 18.04 recién instalado.
+
+$ sudo apt update
+$ sudo apt upgrade
+
+Instalar Tomcat 8
+
+$ cd ~
+$ wget https://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
+$ tar xvf apache-tomcat-8.5.35.tar.gz
+$ sudo mv apache-tomcat-8.5.35 /usr/share/
+$ sudo useradd -M -d /usr/share/apache-tomcat-8.5.35/ tomcat8
+$ sudo chown -R tomcat8 /usr/share/apache-tomcat-8.5.35/
+
+Se debe editar los siguientes archivos
+
+/usr/share/apache-tomcat-8.5.35/webapps/manager/META-INF/context.xml
+/usr/share/apache-tomcat-8.5.35/webapps/host-manager/META-INF/context.xml
+
+Agregando los permisos para la direccion IP que se desee utilizar para invocar el administrador (ejemplo: 192.168.1.20):
+
+allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|192.168.1.20" />
+
+Seguidamente, se establecen los usuarios para la consola administrativa en el archivo:
+
+/usr/share/apache-tomcat-8.5.35/conf/tomcat-users.xml
+
+Agregando las siguientes líneas:
+
+<!-- manager section user role -->
+<role rolename="manager-gui" />
+<user username="manager" password="password123@" roles="manager-gui" />
+
+<!-- admin section user role -->
+<role rolename="admin-gui" />
+<user username="admin" password="Password123@" roles="manager-gui,admin-gui" />
+
+Para iniciar el servicio:
+
+$ sudo su - tomcat8 -c /usr/share/apache-tomcat-8.5.35/bin/startup.sh start
