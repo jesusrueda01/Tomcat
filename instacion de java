@@ -1,0 +1,9 @@
+Instalación de Java 8
+
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt install oracle-java8-set-default
+
+Para verificar:
+
+$ java -version
+$ javac -version
