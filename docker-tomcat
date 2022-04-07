@@ -1,0 +1,17 @@
+Instalar Tomcat
+> docker search tomcat
+
+Extraiga la imagen oficial
+> docker pull tomcat
+
+Inicie la imagen de tomcat
+> docker run -d -p 8080:8080 tomcat
+
+Nota: El primero es el puerto de acceso periférico: el segundo es el puerto interno del contenedor
+El siguiente comando puede iniciar tomcat en segundo plano
+-d: ejecuta el contenedor en segundo plano y devuelve la ID del contenedor;
+-i: ejecuta el contenedor en modo interactivo, generalmente usado con -t;
+-t: reasigna un pseudo terminal de entrada para el contenedor, generalmente usado con -i;
+> docker run –d -p 8080:8080 tomcat
+
+Ingrese ip y puerto para ver la página de inicio de tomcat:
